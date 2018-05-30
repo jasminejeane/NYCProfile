@@ -9,6 +9,7 @@ import { UserListComponent } from './user-list/user-list.component';
 
 import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GiphyService } from './shared/giphy/giphy.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatToolbarModule
   ],
-  providers: [UserService],
+  providers: [UserService, GiphyService],
   bootstrap: [AppComponent]
 })
 
