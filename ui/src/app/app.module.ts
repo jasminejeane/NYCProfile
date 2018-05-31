@@ -11,10 +11,33 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GiphyService } from './shared/giphy/giphy.service';
 
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { UserEditComponent } from './user-edit/user-edit.component';
+
+
+const appRoutes: Routes = [
+{ path: '', redirectTo: '/user-list', pathMatch: 'full' },
+{
+path: 'user-list',
+component: UserListComponent
+},
+{
+path: 'user-add',
+component: UserEditComponent
+},
+{
+path: 'user-edit/:id',
+component: UserEditComponent
+}
+];
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +47,9 @@ import { GiphyService } from './shared/giphy/giphy.service';
     MatCardModule,
     MatInputModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, GiphyService],
   bootstrap: [AppComponent]
