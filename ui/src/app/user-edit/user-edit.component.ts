@@ -15,6 +15,7 @@ import { NgForm } from '@angular/forms';
 
 export class UserEditComponent implements OnInit, OnDestroy {
   user: any = {};
+  results: Array<any>;
 
   sub: Subscription;
 
@@ -40,7 +41,8 @@ ngOnInit() {
         });
       }
     });
-  }
+
+  } //oninit
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -52,7 +54,17 @@ ngOnInit() {
 
   save(form: NgForm) {
     this.userService.save(form).subscribe(result => {
-      this.gotoList();
+      this.userService.getInfo().subscribe( data => {
+        this.results = data;
+        this.results.forEach(function(element) {
+
+          if(element.agency_name.includes(result.occupation) || element.agency_name.includes(result.hobby) ){
+            console.log("filtered", element.agency_name);
+          }
+        });
+      });
+
+      // this.gotoList();
     }, error => console.error(error));
   }
 
@@ -61,4 +73,5 @@ ngOnInit() {
       this.gotoList();
     }, error => console.error(error));
   }
+
 }
