@@ -41,17 +41,6 @@ ngOnInit() {
       }
     });
 
-    this.userService.getInfo().subscribe( data => {
-      this.info = data;
-      this.info.forEach(function(element) {
-        // element.agency_name.indexOf("housing") !== -1
-
-        if(element.agency_name.includes("Housing")){
-          console.log("filtered", element.agency_name);
-        }
-      });
-    });
-
   } //oninit
 
   ngOnDestroy() {
@@ -64,7 +53,20 @@ ngOnInit() {
 
   save(form: NgForm) {
     this.userService.save(form).subscribe(result => {
-      this.gotoList();
+
+      console.log("form result", result);
+      this.userService.getInfo().subscribe( data => {
+        this.info = data;
+        this.info.forEach(function(element) {
+          // element.agency_name.indexOf("housing") !== -1
+
+          if(element.agency_name.includes(result.occupation)){
+            console.log("filtered", element.agency_name);
+          }
+        });
+      });
+
+      // this.gotoList();
     }, error => console.error(error));
   }
 
