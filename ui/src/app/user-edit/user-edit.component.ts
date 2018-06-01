@@ -58,12 +58,13 @@ ngOnInit() {
         this.results = data;
         this.results.forEach(function(element) {
 
-          if(element.agency_name.includes(result.occupation)){
+          if(element.agency_name.includes(result.occupation) || element.agency_name.includes(result.hobby) ){
             console.log("filtered", element.agency_name);
           }
         });
       });
 
+      // this.gotoList();
     }, error => console.error(error));
   }
 
