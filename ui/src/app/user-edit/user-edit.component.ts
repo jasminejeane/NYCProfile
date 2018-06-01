@@ -40,7 +40,19 @@ ngOnInit() {
         });
       }
     });
-  }
+
+    this.userService.getInfo().subscribe( data => {
+      this.info = data;
+      this.info.forEach(function(element) {
+        // element.agency_name.indexOf("housing") !== -1
+
+        if(element.agency_name.includes("Housing")){
+          console.log("filtered", element.agency_name);
+        }
+      });
+    });
+
+  } //oninit
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -61,4 +73,13 @@ ngOnInit() {
       this.gotoList();
     }, error => console.error(error));
   }
+
+  // search(job, hobby){
+  //   this.userService.getInfo().subscribe(data => {
+  //     this.info = data;
+  //
+  //     if(job || hobby ==)
+  //     console.log("list", this.info);
+  //   });
+  // }
 }

@@ -14,6 +14,10 @@ constructor(private http: HttpClient) {
     return this.http.get(this.API + '/top-users');
   }
 
+  getInfo(): Observable<any> {
+    return this.http.get('https://data.cityofnewyork.us/resource/buex-bi6w.json');
+  }
+
   get(id: string) {
     return this.http.get(this.USER_API + '/' + id);
   }

@@ -12,6 +12,7 @@ import { GiphyService } from '../shared/giphy/giphy.service';
 
 export class UserListComponent implements OnInit {
   users: Array<any>;
+  info: Array<any>;
 
   constructor(private userService: UserService, private giphyService: GiphyService) { }
 
@@ -25,5 +26,3 @@ export class UserListComponent implements OnInit {
     });
   }
 }
-
-
