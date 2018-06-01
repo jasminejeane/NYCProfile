@@ -29,6 +29,14 @@
               *ngIf="user.href" type="button">Delete</button>
       <a mat-button routerLink="/user-list">Cancel</a>
     </mat-card-actions>
+
+    <mat-list>
+      <mat-list-item *ngFor="let result of results">
+        <p>{{result.agency_name}}</p>
+      </mat-list-item>
+    </mat-list>
+
+
     <mat-card-footer>
       <div class="giphy">
         <img src="{{user.giphyUrl}}" alt="{{user.name}}">

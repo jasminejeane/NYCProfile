@@ -15,6 +15,7 @@ import { NgForm } from '@angular/forms';
 
 export class UserEditComponent implements OnInit, OnDestroy {
   user: any = {};
+  results: Array<any>;
 
   sub: Subscription;
 
@@ -53,12 +54,9 @@ ngOnInit() {
 
   save(form: NgForm) {
     this.userService.save(form).subscribe(result => {
-
-      console.log("form result", result);
       this.userService.getInfo().subscribe( data => {
-        this.info = data;
-        this.info.forEach(function(element) {
-          // element.agency_name.indexOf("housing") !== -1
+        this.results = data;
+        this.results.forEach(function(element) {
 
           if(element.agency_name.includes(result.occupation)){
             console.log("filtered", element.agency_name);
@@ -66,7 +64,6 @@ ngOnInit() {
         });
       });
 
-      // this.gotoList();
     }, error => console.error(error));
   }
 
@@ -76,12 +73,4 @@ ngOnInit() {
     }, error => console.error(error));
   }
 
-  // search(job, hobby){
-  //   this.userService.getInfo().subscribe(data => {
-  //     this.info = data;
-  //
-  //     if(job || hobby ==)
-  //     console.log("list", this.info);
-  //   });
-  // }
 }
