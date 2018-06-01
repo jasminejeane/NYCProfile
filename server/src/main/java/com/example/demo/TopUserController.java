@@ -17,7 +17,7 @@ class TopUserController {
         this.repository = repository;
     }
 
-    @GetMapping("/top-users")
+    @GetMapping("/users")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<User> topUsers() {
         return repository.findAll().stream()

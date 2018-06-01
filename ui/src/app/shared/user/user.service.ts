@@ -11,7 +11,7 @@ constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get(this.API + '/top-users');
+    return this.http.get(this.API + '/users');
   }
 
   get(id: string) {
