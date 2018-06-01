@@ -20,7 +20,6 @@ public class DemoApplication {
                     "AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
                 User user = new User();
                 user.setName(name);
-                repository.save(user);
             });
             repository.findAll().forEach(System.out::println);
         };

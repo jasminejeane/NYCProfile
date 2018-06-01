@@ -8,6 +8,18 @@
       <mat-form-field>
         <input matInput placeholder="User Name" [(ngModel)]="user.name"
                required name="name" #name>
+
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matInput placeholder="Occupation" [(ngModel)]="user.occupation"
+              required name="occupation" #occupation>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Top Hobby" [(ngModel)]="user.hobby"
+             required name="hobby" #hobby>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

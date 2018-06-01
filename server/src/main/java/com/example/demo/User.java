@@ -17,4 +17,6 @@ public class User {
 	@Id @GeneratedValue
 	private Long id;
 	private @NonNull String name;
+	private @NonNull String occupation;
+	private @NonNull String hobby;
 }
